@@ -2,10 +2,11 @@ package exercise.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import exercise.TemplateEngineUtil;
 
 public class WelcomeServlet extends HttpServlet {
 
@@ -14,7 +15,6 @@ public class WelcomeServlet extends HttpServlet {
                       HttpServletResponse response)
                 throws IOException, ServletException {
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/welcome.jsp");
-        requestDispatcher.forward(request, response);
+        TemplateEngineUtil.render("index.html", request, response);
     }
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layouts/application.html}">
+
+<head>
+  <title>Sign Up</title>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous">
+<section layout:fragment="content">
+  <!-- BEGIN -->
+
+    <h1>Регистрация</h1>
+    <form action="/users" method="post" th:object="${user}">
+        <div class="mb-3">
+            <label>Имя</label>
+            <input class="form-control" type="text" name="firstName" th:value="*{firstName}">
+        </div>
+        <div class="mb-3">
+            <label>Фамилия</label>
+            <input class="form-control" type="text" name="lastName" th:value="*{lastName}">
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input class="form-control" type="email" name="email" th:value="*{email}">
+        </div>
+        <button class="btn btn-primary" type="submit">Создать</button>
+    </form>
+  <!-- END -->
+</section>
