@@ -1,5 +1,6 @@
 package exercise.controller;
 
+import exercise.dto.ArticleDto;
 import exercise.model.Article;
 import exercise.repository.ArticleRepository;
 
@@ -33,14 +34,22 @@ public class ArticlesController {
 
     // BEGIN
     @PostMapping(path = "")
-    public void createArticle(@RequestBody Article article) {
-        articleRepository.save(article);
+    public void createArticle(@RequestBody ArticleDto article) {
+        Article article1 = new Article();
+        article1.setName(article.getName());
+        article1.setBody(article.getBody());
+        article1.setCategory(article.getCategory());
+        articleRepository.save(article1);
     }
 
     @PatchMapping("/{id}")
-    public void updateArticle(@PathVariable long id, @RequestBody Article article) {
-        article.setId(id);
-        articleRepository.save(article);
+    public void updateArticle(@PathVariable long id, @RequestBody ArticleDto article) {
+        Article article1 = articleRepository.findById(id);
+        article1.setName(article.getName());
+        article1.setBody(article.getBody());
+        article1.setCategory(article.getCategory());
+        articleRepository.save(article1);
+
     }
 
     @GetMapping("/{id}")
